@@ -1,0 +1,67 @@
+version: '3.9'
+
+networks:
+  nc:
+    driver: bridge
+  nk:
+    driver: bridge
+
+services:
+  
+  # nginx close
+  ngc:
+    build:
+      context: ./nginx/
+      args: 
+        CONFIG_FILE: 1.0.conf
+    hostname: ngc
+    networks:
+      - nc
+    ports:
+      - '60010:80'
+    deploy:
+     resources:
+        limits:
+           cpus: 2
+           memory: 512M
+
+  # nginx keeplive
+  ngk:
+    build:
+      context: ./nginx/
+      args: 
+        CONFIG_FILE: 1.1.conf
+    hostname: ngk
+    networks:
+      - nk
+    ports:
+      - '60011:80'
+    deploy:
+     resources:
+        limits:
+           cpus: 2
+           memory: 512M
+
+  # internal server close
+  isc:
+    image: ghcr.io/linianhui/nginx:1.21
+    hostname: isc
+    networks:
+      - nc
+    deploy:
+     resources:
+        limits:
+           cpus: 2
+           memory: 512M
+
+  # internal server keeplive
+  isk:
+    image: ghcr.io/linianhui/nginx:1.21
+    hostname: isk
+    networks:
+      - nk
+    deploy:
+     resources:
+        limits:
+           cpus: 2
+           memory: 512M
