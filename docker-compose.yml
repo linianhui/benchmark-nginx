@@ -44,7 +44,10 @@ services:
 
   # internal server close
   isc:
-    image: ghcr.io/linianhui/nginx:1.21
+    build:
+      context: ./nginx/
+      args: 
+        CONFIG_FILE: default.conf
     hostname: isc
     networks:
       - nc
@@ -56,7 +59,10 @@ services:
 
   # internal server keeplive
   isk:
-    image: ghcr.io/linianhui/nginx:1.21
+    build:
+      context: ./nginx/
+      args: 
+        CONFIG_FILE: default.conf
     hostname: isk
     networks:
       - nk
@@ -65,3 +71,13 @@ services:
         limits:
            cpus: 2
            memory: 512M
+
+  netdata:
+    build:
+      context: ./netdata/
+    hostname: nd
+    networks:
+      - nc
+      - nk
+    ports:
+      - 19999:19999

@@ -1,0 +1,12 @@
+jobs:
+  - name: ngc
+    url: http://ngc/stub_status
+
+  - name: isc
+    url: http://isc/stub_status
+
+  - name: ngk
+    url: http://ngk/stub_status
+
+  - name: isk
+    url: http://isk/stub_status

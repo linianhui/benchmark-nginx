@@ -7,6 +7,9 @@ docker-compose --compatibility -p nb up -d --build
 ```
 
 ## benchmark
+
+<http://192.168.2.201:19999>
+
 ```bash
 # http1.1 and close
 ab -c 100 -n 100000 -k http://192.168.2.201:60010/
