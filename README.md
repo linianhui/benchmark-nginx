@@ -20,7 +20,7 @@ tcpdump -w ihs.pcap
 docker cp internal-http-server:/ihs.pcap ihs.pcap
 ```
 
-[http1.1 and keeplive](ab-result/nginx11.md)
+[http1.1 and keeplive](ab-result/nginx11.log)
 ```bash
 # 12:34:45 ~ 12:35:45
 ab -c 100 -n 200000 -k http://192.168.2.201:60011/
@@ -37,7 +37,7 @@ Percentage of the requests served within a certain time (ms)
  100%    221 (longest request)
 ```
 
-[http1.0 and close](ab-result/nginx10.md)
+[http1.0 and close](ab-result/nginx10.log)
 ```bash
 ## 12:37:30 ~ 12:39:00
 ab -c 100 -n 200000 -k http://192.168.2.201:60010/
