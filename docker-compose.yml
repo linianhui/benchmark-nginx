@@ -1,83 +1,39 @@
-version: '3.9'
-
-networks:
-  nc:
-    driver: bridge
-  nk:
-    driver: bridge
+version: '3.8'
 
 services:
   
-  # nginx close
-  ngc:
+  # nginx with upstream 1.0
+  nginx10:
     build:
       context: ./nginx/
       args: 
         CONFIG_FILE: 1.0.conf
-    hostname: ngc
-    networks:
-      - nc
+    hostname: nginx10
+    container_name: nginx10
     ports:
       - '60010:80'
-    deploy:
-     resources:
-        limits:
-           cpus: 2
-           memory: 512M
 
-  # nginx keeplive
-  ngk:
+  # nginx with upstream 1.1
+  nginx11:
     build:
       context: ./nginx/
       args: 
         CONFIG_FILE: 1.1.conf
-    hostname: ngk
-    networks:
-      - nk
+    hostname: nginx11
+    container_name: nginx11
     ports:
       - '60011:80'
-    deploy:
-     resources:
-        limits:
-           cpus: 2
-           memory: 512M
 
-  # internal server close
-  isc:
+  # internal http server
+  internal-http-server:
     build:
       context: ./nginx/
       args: 
-        CONFIG_FILE: default.conf
-    hostname: isc
-    networks:
-      - nc
-    deploy:
-     resources:
-        limits:
-           cpus: 2
-           memory: 512M
-
-  # internal server keeplive
-  isk:
-    build:
-      context: ./nginx/
-      args: 
-        CONFIG_FILE: default.conf
-    hostname: isk
-    networks:
-      - nk
-    deploy:
-     resources:
-        limits:
-           cpus: 2
-           memory: 512M
+        CONFIG_FILE: internal-http-server.conf
+    hostname: internal-http-server
+    container_name: internal-http-server
 
   netdata:
-    build:
-      context: ./netdata/
-    hostname: nd
-    networks:
-      - nc
-      - nk
+    build: ./netdata/
     ports:
       - 19999:19999

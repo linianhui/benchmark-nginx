@@ -1,12 +1,9 @@
 jobs:
-  - name: ngc
-    url: http://ngc/stub_status
+  - name: nginx10
+    url: http://nginx10/stub_status
 
-  - name: isc
-    url: http://isc/stub_status
+  - name: nginx11
+    url: http://nginx11/stub_status
 
-  - name: ngk
-    url: http://ngk/stub_status
-
-  - name: isk
-    url: http://isk/stub_status
+  - name: internal-http-server
+    url: http://internal-http-server/stub_status
