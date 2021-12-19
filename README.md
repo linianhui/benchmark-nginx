@@ -56,3 +56,7 @@ Percentage of the requests served within a certain time (ms)
 
 ![internal-http-server监控](img/netdata.png)
 ![internal-http-server wireshark io graph](img/wireshark-io-graph.png)
+
+# reference
+
+<https://www.nginx.com/blog/tuning-nginx/>
