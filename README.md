@@ -12,50 +12,52 @@ docker-compose up -d --build
 
 
 ```bash
-docker exec -it internal-http-server bash
+docker exec -it internal bash
 
 # ab 跑完后再停止抓包
-tcpdump -w ihs.pcap
+tcpdump -w internal.pcap
 
-docker cp internal-http-server:/ihs.pcap ihs.pcap
+docker cp internal:/internal.pcap internal.pcap
 ```
 
-[http1.1 and keeplive](ab-result/nginx11.log)
+[http1.1 and keeplive](ab-result/http1.1.log)
 ```bash
-# 12:34:45 ~ 12:35:45
-ab -c 100 -n 200000 -k http://192.168.2.201:60011/
+ab -c 100 -n 200000 -k http://192.168.2.201:60080/http1.1
+
+Requests per second:    23247.32 [#/sec] (mean)
 
 Percentage of the requests served within a certain time (ms)
-  50%     32
-  66%     35
-  75%     36
-  80%     37
-  90%     40
-  95%     45
-  98%     55
-  99%     64
- 100%    221 (longest request)
+  50%      4
+  66%      6
+  75%      8
+  80%      8
+  90%     10
+  95%     12
+  98%     14
+  99%     16
+ 100%     32 (longest request)
 ```
 
-[http1.0 and close](ab-result/nginx10.log)
+[http1.0 and close](ab-result/http1.0.log)
 ```bash
-## 12:37:30 ~ 12:39:00
-ab -c 100 -n 200000 -k http://192.168.2.201:60010/
+ab -c 100 -n 200000 -k http://192.168.2.201:60080/http1.0
+
+Requests per second:    13778.78 [#/sec] (mean)
 
 Percentage of the requests served within a certain time (ms)
-  50%     33
-  66%     36
-  75%     39
-  80%     42
-  90%     93
-  95%    112
-  98%    183
-  99%    204
- 100%   1055 (longest request)
+  50%      6
+  66%     10
+  75%     13
+  80%     14
+  90%     17
+  95%     19
+  98%     21
+  99%     25
+ 100%     47 (longest request)
 ```
 
-![internal-http-server监控](img/netdata.png)
-![internal-http-server wireshark io graph](img/wireshark-io-graph.png)
+![监控](img/netdata.png)
+![wireshark io graph](img/wireshark-io-graph.png)
 
 # reference
 

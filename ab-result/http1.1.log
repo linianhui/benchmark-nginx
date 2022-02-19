@@ -18,37 +18,37 @@ Finished 200000 requests
 
 Server Software:        nginx/1.21.4
 Server Hostname:        192.168.2.201
-Server Port:            60010
+Server Port:            60080
 
-Document Path:          /
-Document Length:        615 bytes
+Document Path:          /http1.1
+Document Length:        34 bytes
 
 Concurrency Level:      100
-Time taken for tests:   90.491 seconds
+Time taken for tests:   8.603 seconds
 Complete requests:      200000
 Failed requests:        0
-Keep-Alive requests:    199842
-Total transferred:      170599210 bytes
-HTML transferred:       123000000 bytes
-Requests per second:    2210.16 [#/sec] (mean)
-Time per request:       45.246 [ms] (mean)
-Time per request:       0.452 [ms] (mean, across all concurrent requests)
-Transfer rate:          1841.07 [Kbytes/sec] received
+Keep-Alive requests:    199840
+Total transferred:      36399200 bytes
+HTML transferred:       6800000 bytes
+Requests per second:    23247.32 [#/sec] (mean)
+Time per request:       4.302 [ms] (mean)
+Time per request:       0.043 [ms] (mean, across all concurrent requests)
+Transfer rate:          4131.76 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    0   0.6      0      49
-Processing:     6   45  34.8     33    1055
-Waiting:        5   45  34.8     33    1055
-Total:          6   45  34.8     33    1055
+Connect:        0    0   0.0      0      11
+Processing:     0    4   4.3      4      32
+Waiting:        0    4   4.3      4      32
+Total:          0    4   4.3      4      32
 
 Percentage of the requests served within a certain time (ms)
-  50%     33
-  66%     36
-  75%     39
-  80%     42
-  90%     93
-  95%    112
-  98%    183
-  99%    204
- 100%   1055 (longest request)
+  50%      4
+  66%      6
+  75%      8
+  80%      8
+  90%     10
+  95%     12
+  98%     14
+  99%     16
+ 100%     32 (longest request)

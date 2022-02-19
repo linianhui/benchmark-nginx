@@ -1,9 +1,6 @@
 jobs:
-  - name: nginx10
-    url: http://nginx10/stub_status
+  - name: nginx
+    url: http://nginx/stub_status
 
-  - name: nginx11
-    url: http://nginx11/stub_status
-
-  - name: internal-http-server
-    url: http://internal-http-server/stub_status
+  - name: internal
+    url: http://internal/stub_status

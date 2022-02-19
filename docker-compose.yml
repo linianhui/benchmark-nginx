@@ -2,38 +2,29 @@ version: '3.8'
 
 services:
   
-  # nginx with upstream 1.0
-  nginx10:
+  # nginx
+  nginx:
     build:
       context: ./nginx/
       args: 
-        CONFIG_FILE: 1.0.conf
-    hostname: nginx10
-    container_name: nginx10
+        CONFIG_FILE: nginx.conf
+    hostname: nginx
+    container_name: nginx
     ports:
-      - '60010:80'
+      - '60080:80'
 
-  # nginx with upstream 1.1
-  nginx11:
+  # internal
+  internal:
     build:
       context: ./nginx/
       args: 
-        CONFIG_FILE: 1.1.conf
-    hostname: nginx11
-    container_name: nginx11
-    ports:
-      - '60011:80'
-
-  # internal http server
-  internal-http-server:
-    build:
-      context: ./nginx/
-      args: 
-        CONFIG_FILE: internal-http-server.conf
-    hostname: internal-http-server
-    container_name: internal-http-server
+        CONFIG_FILE: internal.conf
+    hostname: internal
+    container_name: internal
 
   netdata:
     build: ./netdata/
     ports:
       - 19999:19999
+    hostname: netdata
+    container_name: netdata
